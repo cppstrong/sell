@@ -12,3 +12,11 @@ spring:
 server:
   servlet:
     context-path: /sell
+
+wechat:
+  mpAppId: wx2185fd6d08c322c7
+  mpSecret: 21a0df22eff4c4101830e9a6a06dfbd7
+  mchId:
+  mchKey:
+  keyPath:
+  notifyUrl: http://vkzjxb.natappfree.cc/sell/pay/notify
