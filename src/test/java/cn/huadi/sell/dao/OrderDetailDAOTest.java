@@ -24,7 +24,7 @@ class OrderDetailDAOTest {
     private OrderDetailDAO orderDetailDAO;
 
     @Test
-    public void insert(){
+    public void insert() {
         OrderDetail orderDetail = new OrderDetail();
         orderDetail.setOrderId("123457");
         orderDetail.setDetailId("11112");
@@ -35,11 +35,11 @@ class OrderDetailDAOTest {
         orderDetail.setProductQuantity(2);
 
         int result = orderDetailDAO.insert(orderDetail);
-        assertNotEquals(0,result);
+        assertNotEquals(0, result);
     }
 
     @Test
-    public void selectByOrderId(){
+    public void selectByOrderId() {
         OrderDetail orderDetail = orderDetailDAO.selectById("11111");
         Assertions.assertNotNull(orderDetail);
     }

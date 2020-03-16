@@ -15,26 +15,40 @@ import java.math.BigDecimal;
 @Data
 public class OrderDetail {
 
-    /** 订单详情id. */
+    /**
+     * 订单详情id.
+     */
     @TableId
     private String detailId;
 
-    /** 订单id. */
+    /**
+     * 订单id.
+     */
     private String orderId;
 
-    /** 商品id. */
+    /**
+     * 商品id.
+     */
     private String productId;
 
-    /** 商品名称. */
+    /**
+     * 商品名称.
+     */
     private String productName;
 
-    /** 当前价格,单位分. */
+    /**
+     * 当前价格,单位分.
+     */
     private BigDecimal productPrice;
 
-    /** 数量. */
+    /**
+     * 数量.
+     */
     private Integer productQuantity;
 
-    /** 小图. */
+    /**
+     * 小图.
+     */
     private String productIcon;
 
 

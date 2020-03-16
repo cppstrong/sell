@@ -21,10 +21,10 @@ public class MybatisPlusConfig {
     /**
      * @description 分页插件
      * @author caipeng
-     * @updateTime  
+     * @updateTime
      */
     @Bean
-    public PaginationInterceptor paginationInterceptor(){
+    public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
     }
 

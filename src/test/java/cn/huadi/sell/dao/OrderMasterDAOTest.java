@@ -26,7 +26,7 @@ class OrderMasterDAOTest {
     private final String OPENID = "001001";
 
     @Test
-    public void insert(){
+    public void insert() {
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("123458");
         orderMaster.setBuyerName("张伟");
@@ -38,7 +38,7 @@ class OrderMasterDAOTest {
     }
 
     @Test
-    public void updateById(){
+    public void updateById() {
         OrderMaster orderMaster = new OrderMaster();
         orderMaster.setOrderId("123457");
         orderMaster.setBuyerName("老徐");
@@ -50,11 +50,11 @@ class OrderMasterDAOTest {
     }
 
     @Test
-    public void selectByBuyerOpenid(){
+    public void selectByBuyerOpenid() {
         QueryWrapper wrapper = new QueryWrapper();
-        wrapper.eq("buyer_openid",this.OPENID);
+        wrapper.eq("buyer_openid", this.OPENID);
         Page<OrderMaster> page = orderMasterDAO.selectPage(new Page<OrderMaster>(1, 3), wrapper);
-        Assertions.assertNotEquals(0,page.getRecords().size());
+        Assertions.assertNotEquals(0, page.getRecords().size());
     }
 
 }

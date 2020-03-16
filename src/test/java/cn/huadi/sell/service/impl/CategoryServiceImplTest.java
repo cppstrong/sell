@@ -26,27 +26,27 @@ class CategoryServiceImplTest {
     @Test
     void selectOne() {
         ProductCategory category = categoryservice.SelectOne(1);
-        Assertions.assertEquals(Integer.parseInt("1"),category.getCategoryType());
+        Assertions.assertEquals(Integer.parseInt("1"), category.getCategoryType());
     }
 
     @Test
     void selectAll() {
         List<ProductCategory> categoryList = categoryservice.selectAll();
-        Assertions.assertNotEquals(0,categoryList.size());
+        Assertions.assertNotEquals(0, categoryList.size());
 
     }
 
     @Test
     void selectListByTypeIn() {
-        List<Integer> typeList = Arrays.asList(2,3);
+        List<Integer> typeList = Arrays.asList(2, 3);
         List<ProductCategory> categoryList = categoryservice.selectListByTypeIn(typeList);
-        Assertions.assertNotEquals(0,categoryList.size());
+        Assertions.assertNotEquals(0, categoryList.size());
     }
 
     @Transactional
     @Test
     void insert() {
-        ProductCategory category = new ProductCategory("儿童最f",4);
+        ProductCategory category = new ProductCategory("儿童最f", 4);
         Boolean flag = categoryservice.insert(category);
         Assertions.assertTrue(flag);
     }
@@ -54,7 +54,7 @@ class CategoryServiceImplTest {
     @Transactional
     @Test
     void update() {
-        ProductCategory category = new ProductCategory("儿童最爱",4);
+        ProductCategory category = new ProductCategory("儿童最爱", 4);
         Boolean flag = categoryservice.update(category);
         Assertions.assertTrue(flag);
     }

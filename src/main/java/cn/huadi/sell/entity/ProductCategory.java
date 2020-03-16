@@ -21,22 +21,32 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @TableName(value = "product_category")
-public class ProductCategory extends BaseEntity{
+public class ProductCategory extends BaseEntity {
 
-    /** 类目id */
-    @TableId(value = "category_id",type = IdType.AUTO)
+    /**
+     * 类目id
+     */
+    @TableId(value = "category_id", type = IdType.AUTO)
     private Integer categoryId;
 
-    /** 类目名称 */
+    /**
+     * 类目名称
+     */
     private String categoryName;
 
-    /** 类目编号 */
+    /**
+     * 类目编号
+     */
     private Integer categoryType;
 
-    /** 创建时间*/
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
-    /** 更新时间*/
+    /**
+     * 更新时间
+     */
     @TableField(update = "now()")
     private Date updateTime;
 

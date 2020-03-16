@@ -26,7 +26,7 @@ class ProductInfoDAOTest {
 
     @Test
     @Transactional
-    public void insert(){
+    public void insert() {
         ProductInfo productInfo = new ProductInfo();
         productInfo.setProductId("123457");
         productInfo.setProductName("花生粥");
@@ -41,17 +41,17 @@ class ProductInfoDAOTest {
     }
 
     @Test
-    void update(){
+    void update() {
         QueryWrapper wrapper = new QueryWrapper();
 
         ProductInfo productInfo = new ProductInfo();
         productInfo.setProductStock(500);
         productInfo.setProductName("芒果冰");
-        dao.update(productInfo,null);
+        dao.update(productInfo, null);
     }
 
     @Test
-    public void selectProductByProductStatus(){
+    public void selectProductByProductStatus() {
         QueryWrapper<ProductInfo> wrapper = new QueryWrapper();
         wrapper.eq("product_status", Integer.valueOf(1));
         List<ProductInfo> productInfos = dao.selectList(wrapper);

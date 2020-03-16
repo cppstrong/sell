@@ -11,7 +11,7 @@ import cn.huadi.sell.VO.ResultVO;
  */
 public class ResultVOUtil {
 
-    public static ResultVO success(Object object){
+    public static ResultVO success(Object object) {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(0);
         resultVO.setMessage("成功");
@@ -19,7 +19,7 @@ public class ResultVOUtil {
         return resultVO;
     }
 
-    public static ResultVO success(){
+    public static ResultVO success() {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(0);
         resultVO.setData(null);
@@ -27,7 +27,7 @@ public class ResultVOUtil {
         return resultVO;
     }
 
-    public static ResultVO error(Integer code,String massage){
+    public static ResultVO error(Integer code, String massage) {
         ResultVO<Object> resultVO = new ResultVO<>();
         resultVO.setCode(code);
         resultVO.setMessage(massage);

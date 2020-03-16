@@ -37,6 +37,6 @@ public class PayServiceImpl implements PayService {
         log.info("【微信支付】 request = {}", JsonUtil.toJson(payRequest));
 
         PayResponse response = bestPayService.pay(payRequest);
-        log.info("【微信支付】 response = {}",JsonUtil.toJson(response));
+        log.info("【微信支付】 response = {}", JsonUtil.toJson(response));
     }
 }

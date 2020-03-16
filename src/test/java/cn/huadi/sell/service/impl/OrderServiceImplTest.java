@@ -62,35 +62,35 @@ class OrderServiceImplTest {
     @Test
     void selectOne() {
         OrderDTO result = orderService.selectOne(orderId);
-        log.info("【查询单个订单】,result={}",result);
-        Assertions.assertEquals(orderId,result.getOrderId());
+        log.info("【查询单个订单】,result={}", result);
+        Assertions.assertEquals(orderId, result.getOrderId());
     }
 
     @Test
     void selectList() {
         Page<OrderDTO> result = orderService.selectList(BUYER_OPENID, new Page(1, 3));
-        log.info("【订单列表】，result={}",result.getRecords());
-        Assertions.assertNotEquals(0,result.getRecords().size());
+        log.info("【订单列表】，result={}", result.getRecords());
+        Assertions.assertNotEquals(0, result.getRecords().size());
     }
 
     @Test
     void cancel() {
         OrderDTO orderDTO = orderService.selectOne(orderId);
         OrderDTO result = orderService.cancel(orderDTO);
-        Assertions.assertEquals(OrderStatusEnum.CANCEL.getCode(),result.getOrderStatus());
+        Assertions.assertEquals(OrderStatusEnum.CANCEL.getCode(), result.getOrderStatus());
     }
 
     @Test
     void finish() {
         OrderDTO orderDTO = orderService.selectOne(orderId);
         OrderDTO result = orderService.finish(orderDTO);
-        Assertions.assertEquals(OrderStatusEnum.FINISHED.getCode(),result.getOrderStatus());
+        Assertions.assertEquals(OrderStatusEnum.FINISHED.getCode(), result.getOrderStatus());
     }
 
     @Test
     void paid() {
         OrderDTO orderDTO = orderService.selectOne(orderId);
         OrderDTO result = orderService.paid(orderDTO);
-        Assertions.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
+        Assertions.assertEquals(PayStatusEnum.SUCCESS.getCode(), result.getPayStatus());
     }
 }

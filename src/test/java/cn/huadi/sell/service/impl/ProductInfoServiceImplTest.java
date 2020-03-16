@@ -31,12 +31,12 @@ class ProductInfoServiceImplTest {
     @Test
     void selectUpAll() {
         List<ProductInfo> list = productService.selectUpAll();
-        Assertions.assertNotEquals(0,list.size());
+        Assertions.assertNotEquals(0, list.size());
     }
 
     @Test
     void selectAll() {
-        Page<ProductInfo> page = new Page<>(1,2);
+        Page<ProductInfo> page = new Page<>(1, 2);
         Page<ProductInfo> productPage = productService.selectAll(page);
         System.out.println(productPage.getCurrent());//当前第几页
         System.out.println(productPage.getRecords());//所有记录

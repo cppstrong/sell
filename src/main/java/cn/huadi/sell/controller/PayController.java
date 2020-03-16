@@ -26,10 +26,10 @@ public class PayController {
 
     @GetMapping("/create")
     public ModelAndView create(@RequestParam("orderId") String orderId,
-                               @RequestParam("returnUrl") String returnUrl){
+                               @RequestParam("returnUrl") String returnUrl) {
         //1.查询订单
         OrderDTO orderDTO = orderService.selectOne(orderId);
-        if (orderDTO == null){
+        if (orderDTO == null) {
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }
         //2.发起支付

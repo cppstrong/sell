@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
  */
 public class JsonUtil {
 
-    public static String toJson(Object object){
+    public static String toJson(Object object) {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setPrettyPrinting();
         Gson gson = gsonBuilder.create();

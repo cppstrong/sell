@@ -30,7 +30,7 @@ public class ProductCategoryDAOTest {
     private ProductCategoryDAO PCMapper;
 
     @Test
-    public void fondOneTest(){
+    public void fondOneTest() {
         ProductCategory productCategory = PCMapper.selectById(2);
 
         System.out.println(productCategory.toString());
@@ -38,37 +38,37 @@ public class ProductCategoryDAOTest {
 
     @Test
     @Transactional
-    public void insertTest(){
-        ProductCategory category = new ProductCategory("男生最爱",3);
+    public void insertTest() {
+        ProductCategory category = new ProductCategory("男生最爱", 3);
         Integer result = PCMapper.insert(category);
-        Assertions.assertNotNull(result,"测试assertNotNull");
+        Assertions.assertNotNull(result, "测试assertNotNull");
 //        Assertions.assertNotEquals(null,result,"测试assert equals");
     }
 
     @Test
-    public void updateTest(){
+    public void updateTest() {
         ProductCategory category = PCMapper.selectById(1);
         category.setCategoryName("男生最爱");
         PCMapper.updateById(category);
     }
 
     @Test
-    public  void selectListByIds(){
+    public void selectListByIds() {
         List<Integer> idList = Arrays.asList(2, 3, 4);
         List<ProductCategory> result = PCMapper.selectBatchIds(idList);
-        Assertions.assertNotEquals(0,result.size());
+        Assertions.assertNotEquals(0, result.size());
     }
 
     @Test
-    public void selectListByTypeIn(){
+    public void selectListByTypeIn() {
         QueryWrapper<ProductCategory> wrapper = new QueryWrapper<ProductCategory>();
-        wrapper.in("category_type",Arrays.asList(2,3));
+        wrapper.in("category_type", Arrays.asList(2, 3));
         List<ProductCategory> categoryList = PCMapper.selectList(wrapper);
         System.out.println(categoryList.toString());
     }
 
     @Test
-    public void selectAll(){
+    public void selectAll() {
         List<ProductCategory> categoryList = PCMapper.selectList(null);
         Assertions.assertNotNull(categoryList);
     }

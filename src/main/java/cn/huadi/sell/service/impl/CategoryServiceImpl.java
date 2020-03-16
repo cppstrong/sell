@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<ProductCategory> selectListByTypeIn(List<Integer> categoryTypeList) {
         QueryWrapper<ProductCategory> wrapper = new QueryWrapper<>();
-        wrapper.in("category_type",categoryTypeList);
+        wrapper.in("category_type", categoryTypeList);
         return this.categoryMapper.selectList(wrapper);
     }
 

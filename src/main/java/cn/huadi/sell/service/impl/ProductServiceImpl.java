@@ -50,22 +50,22 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public boolean insert(ProductInfo productInfo) {
         int result = productInfoDAO.insert(productInfo);
-        return 0==result;
+        return 0 == result;
     }
 
     @Override
     public boolean updateById(ProductInfo productInfo) {
         QueryWrapper<ProductInfo> wrapper = new QueryWrapper<>();
-        productInfoDAO.update(productInfo,wrapper.eq("product_id",productInfo.getProductId()));
+        productInfoDAO.update(productInfo, wrapper.eq("product_id", productInfo.getProductId()));
         return false;
     }
 
     @Override
     @Transactional
     public void increaseStore(List<CartDTO> cartDTOList) {
-        for (CartDTO cartDTO:cartDTOList){
+        for (CartDTO cartDTO : cartDTOList) {
             ProductInfo productInfo = productInfoDAO.selectById(cartDTO.getProductId());
-            if (productInfo == null ){
+            if (productInfo == null) {
                 throw new SellException(ResultEnum.ORDERDETAIL_NOT_EXIST);
             }
             Integer result = productInfo.getProductStock() + cartDTO.getProductQuantity();
@@ -78,13 +78,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public void decreaseStore(List<CartDTO> cartDTOList) {
-        for (CartDTO cartDTO:cartDTOList){
+        for (CartDTO cartDTO : cartDTOList) {
             ProductInfo productInfo = productInfoDAO.selectById(cartDTO.getProductId());
-            if (productInfo == null){
+            if (productInfo == null) {
                 throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);
             }
             Integer result = productInfo.getProductStock() - cartDTO.getProductQuantity();
-            if (result < 0){
+            if (result < 0) {
                 throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
             }
             productInfo.setProductStock(result);

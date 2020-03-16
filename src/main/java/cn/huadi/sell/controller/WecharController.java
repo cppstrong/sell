@@ -30,22 +30,22 @@ public class WecharController {
     private WxMpService wxMpService;
 
     @GetMapping("/authorize")
-    public String authorize(@RequestParam("returnUrl") String returnUrl){
+    public String authorize(@RequestParam("returnUrl") String returnUrl) {
         //1.配置
         //2.调用方法
         String url = "http://vkzjxb.natappfree.cc/sell/wechat/userInfo";
-        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url,WxConsts.OAuth2Scope.SNSAPI_BASE, URLEncoder.encode(returnUrl));
+        String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, URLEncoder.encode(returnUrl));
         return "redirect:" + redirectUrl;
     }
 
     @GetMapping("/userInfo")
-    public String userInfo(@RequestParam("code") String code, @RequestParam("state") String returnUrl){
+    public String userInfo(@RequestParam("code") String code, @RequestParam("state") String returnUrl) {
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
-        try{
-            wxMpOAuth2AccessToken =wxMpService.oauth2getAccessToken(code);
-        }catch (WxErrorException e){
-            log.error("【微信网页授权】{}",e);
-            throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(),e.getError().getErrorMsg());
+        try {
+            wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
+        } catch (WxErrorException e) {
+            log.error("【微信网页授权】{}", e);
+            throw new SellException(ResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
         String openId = wxMpOAuth2AccessToken.getOpenId();
         return "redirect:" + returnUrl + "?openid=" + openId;

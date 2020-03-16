@@ -28,11 +28,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/buyer/product")
 public class BuyerProductController {
 
-    @Autowired private ProductService productService;
-    @Autowired private CategoryService categoryService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("/list")
-    public ResultVO list(){
+    public ResultVO list() {
 
         //1.查询所有上架商品
         List<ProductInfo> productInfos = productService.selectUpAll();
@@ -48,16 +50,16 @@ public class BuyerProductController {
         List<ProductCategory> productCategoryList = categoryService.selectListByTypeIn(categoryTypeList);
         //3.拼装数据
         List<ProductCategoryVO> productCategoryVOList = new ArrayList<>();
-        for(ProductCategory productCategory:productCategoryList){
+        for (ProductCategory productCategory : productCategoryList) {
             ProductCategoryVO productCategoryVO = new ProductCategoryVO();
             productCategoryVO.setCategoryName(productCategory.getCategoryName());
             productCategoryVO.setCategoryType(productCategory.getCategoryType());
 
             List<ProductInfoVO> productInfoVOList = new ArrayList<>();
-            for(ProductInfo productInfo:productInfos){
-                if(productInfo.getCategoryType().equals(productCategory.getCategoryType())){
+            for (ProductInfo productInfo : productInfos) {
+                if (productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
-                    BeanUtils.copyProperties(productInfo,productInfoVO);
+                    BeanUtils.copyProperties(productInfo, productInfoVO);
                     productInfoVOList.add(productInfoVO);
                 }
             }

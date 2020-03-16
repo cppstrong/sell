@@ -22,7 +22,7 @@ import java.util.List;
 @Slf4j
 public class OrderForm2OrderDTOConverter {
 
-    public static OrderDTO convert(OrderForm orderForm){
+    public static OrderDTO convert(OrderForm orderForm) {
         Gson gson = new Gson();
 
         OrderDTO orderDTO = new OrderDTO();
@@ -33,11 +33,11 @@ public class OrderForm2OrderDTOConverter {
 
         List<OrderDetail> orderDetailList = new ArrayList<>();
         try {
-            orderDetailList  = gson.fromJson(orderForm.getItems(),
+            orderDetailList = gson.fromJson(orderForm.getItems(),
                     new TypeToken<List<OrderDetail>>() {
                     }.getType());
-        }catch (Exception e){
-            log.error("【对象转换错误】string = {}",orderForm.getItems());
+        } catch (Exception e) {
+            log.error("【对象转换错误】string = {}", orderForm.getItems());
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
         orderDTO.setOrderDetailList(orderDetailList);

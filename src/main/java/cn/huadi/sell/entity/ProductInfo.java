@@ -20,36 +20,54 @@ import java.util.Date;
 
 @Data
 @TableName(value = "product_info")
-public class ProductInfo extends BaseEntity{
+public class ProductInfo extends BaseEntity {
 
     @TableId
     private String productId;
 
-    /** 名称. */
+    /**
+     * 名称.
+     */
     private String productName;
 
-    /** 单价. */
+    /**
+     * 单价.
+     */
     private BigDecimal productPrice;
 
-    /** 库存. */
+    /**
+     * 库存.
+     */
     private Integer productStock;
 
-    /** 描述. */
+    /**
+     * 描述.
+     */
     private String productDescription;
 
-    /** 小图. */
+    /**
+     * 小图.
+     */
     private String productIcon;
 
-    /** 商品状态,0正常 1下架. */
+    /**
+     * 商品状态,0正常 1下架.
+     */
     private Integer productStatus;
 
-    /** 类目编号. */
+    /**
+     * 类目编号.
+     */
     private Integer categoryType;
 
-    /** 创建时间*/
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
-    /** 更新时间*/
+    /**
+     * 更新时间
+     */
     @TableField(update = "now()")
     private Date updateTime;
 

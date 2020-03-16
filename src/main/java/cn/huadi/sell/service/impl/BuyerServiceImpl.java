@@ -32,19 +32,19 @@ public class BuyerServiceImpl implements BuyerService {
     public OrderDTO cancelOrder(String openId, String orderId) {
         OrderDTO orderDTO = checkOrderOwner(openId, orderId);
         if (orderDTO == null) {
-            log.error("【取消订单】 查不到该订单，orderId = {}",orderId);
+            log.error("【取消订单】 查不到该订单，orderId = {}", orderId);
             throw new SellException(ResultEnum.ORDER_NOT_EXIST);
         }
         return orderService.cancel(orderDTO);
     }
 
-    private OrderDTO checkOrderOwner (String openId, String orderId) {
+    private OrderDTO checkOrderOwner(String openId, String orderId) {
         OrderDTO orderDTO = orderService.selectOne(orderId);
         if (orderDTO == null) {
             return null;
         }
         if (!orderDTO.getBuyerOpenid().equalsIgnoreCase(openId)) {
-            log.error("【订单查询】订单的openid不一致, openid={},orderDTO={}",openId,orderDTO);
+            log.error("【订单查询】订单的openid不一致, openid={},orderDTO={}", openId, orderDTO);
             throw new SellException(ResultEnum.ORDER_OWNER_ERROR);
         }
 
